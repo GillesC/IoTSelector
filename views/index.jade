@@ -1,5 +1,29 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+
+    .container
+        .row
+            for technology in technologies
+                .card(style='width: 20rem; margin:1rem; padding:0.5rem;')
+                    if(typeof (technology.icon) !== 'undefined')
+                        img.card-img-top.img-fluid(src=technology.icon)
+                    else
+                        img.card-img-top.img-fluid
+                      .card-block
+                        h4.card-title #{technology.name}
+                        p.card-text
+                          | #{technology.info}
+                      ul.list-group.list-group-flush
+                        li.list-group-item Version #{technology.version}
+                        li.list-group-item ID #{technology.id}
+                        li.list-group-item Vestibulum at eros
+                      if(typeof (technology.dependencies) !== 'undefined')
+                        if(technology.dependencies.length)
+                            .card-block
+                            for dependency in technology.dependencies
+                                a.card-link(href='#') #{dependency.name}
+                      for service in technology.services
+                          ul.list-group.list-group-flush
+                              li.list-group-item #{service.name} #{service.values}
+
