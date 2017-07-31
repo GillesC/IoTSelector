@@ -1,0 +1,8 @@
+{
+	"id" : 2,
+	"name" : "LoRa",
+	"services" :  "array of services (auto filled)",
+	"dependencies" : [],
+	"info" : "informatie over de service",
+	"version" : "version number"
+}

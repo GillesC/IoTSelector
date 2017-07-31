@@ -1,0 +1,9 @@
+{
+  "serviceDefId": 3,
+  "technologyID": 2,
+  "values": [
+    300,
+    50000
+  ],
+  "info": "(https://www.lora-alliance.org/What-Is-LoRa/Technology)"
+}

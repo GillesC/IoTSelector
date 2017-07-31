@@ -1,0 +1,11 @@
+{
+  "classDefinitions": [
+    "LOW (0)",
+    "MEDIUM (1)",
+    "HIGH (2)"
+  ],
+  "id": 4,
+  "info": "Security measures in this technology (LOW (0) - MEDIUM (1) - HIGH (2))",
+  "name": "Security",
+  "type": "CLASS"
+}

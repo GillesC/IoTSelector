@@ -1,0 +1,8 @@
+{
+	"id" : 12,
+	"name" : "ZigBee",
+	"services" :  "array of services (auto filled)",
+	"dependencies" : [],
+	"info" : "informatie over de service",
+	"version" : "version number"
+}

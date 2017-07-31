@@ -1,0 +1,6 @@
+{
+  "serviceID": "reference to service definition",
+  "technologyID": "reference to technology definition",
+  "values": "array of values",
+  "info": "informatie over de service"
+}

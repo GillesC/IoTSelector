@@ -1,0 +1,6 @@
+{
+	"id" : 					1,
+	"name" : 				"Roaming",
+	"type" :  				"BOOLEAN",
+	"info" : 				"Is roaming supported? roaming == changing from a network from one operator to another"
+}

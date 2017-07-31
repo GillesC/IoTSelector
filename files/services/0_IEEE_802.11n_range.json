@@ -1,0 +1,9 @@
+{
+  "serviceDefId": 0,
+  "technologyID": 0,
+  "values": [
+    70,
+    250
+  ],
+  "info": "70 m indoor and 250 outdoor (https://en.wikipedia.org/wiki/IEEE_802.11n-2009#Comparison)"
+}

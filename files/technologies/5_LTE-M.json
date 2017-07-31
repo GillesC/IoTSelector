@@ -1,0 +1,8 @@
+{
+	"id" : 5,
+	"name" : "LTE-M",
+	"services" :  "array of services (auto filled)",
+	"dependencies" : [],
+	"info" : "informatie over de service",
+	"version" : "version number"
+}

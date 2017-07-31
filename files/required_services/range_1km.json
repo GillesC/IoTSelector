@@ -1,0 +1,7 @@
+{
+  "serviceDefId": 0,
+  "values": [
+    1000
+  ],
+    "compare" : ">="
+}

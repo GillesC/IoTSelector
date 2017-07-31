@@ -1,0 +1,9 @@
+{
+	"id" : 8,
+	"name" : "Bluetooth",
+	"icon" : "https://www.bluetooth.com/~/media/images/logos/logo.ashx",
+	"services" :  "array of services (auto filled)",
+	"dependencies" : [],
+	"info" : "informatie over de service",
+	"version" : "4"
+}

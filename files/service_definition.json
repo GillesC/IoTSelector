@@ -1,0 +1,7 @@
+{
+	"id" : -1,
+	"name" : "NULL",
+	"type" :  ["CLASS","VALUE","RANGE","BOOLEAN"],
+	"classDefinitions" : "uit welke klasses je kan kiezen met hun nummer (= hun weight)",
+	"info" : "informatie over de service"
+}

@@ -1,0 +1,9 @@
+{
+  "serviceDefId": 0,
+  "technologyID": 3,
+  "values": [
+    3000,
+    50000
+  ],
+  "info": "Communication between end-device/node and the base station. 50km LOS ; 3km urban (http://www.radio-electronics.com/info/wireless/sigfox/basics-tutorial.php)"
+}

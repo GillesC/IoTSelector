@@ -1,0 +1,6 @@
+{
+	"id" : 					3,
+	"name" : 				"UL Data Rate",
+	"type" :  				"RANGE",
+	"info" : 				"uplink data rate in bps"
+}

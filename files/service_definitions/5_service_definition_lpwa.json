@@ -1,0 +1,6 @@
+{
+	"id" : 					5,
+	"name" : 				"LPWAN",
+	"type" :  				"BOOLEAN",
+	"info" : 				"Has this technology LPWA characteristics"
+}

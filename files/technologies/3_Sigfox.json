@@ -1,0 +1,8 @@
+{
+	"id" : 3,
+	"name" : "SIGFOX",
+	"services" :  "array of services (auto filled)",
+	"dependencies" : "array of DEPENDENCIES (IDs of the technologies which are required)",
+	"info" : "informatie over de service",
+	"version" : "version number"
+}

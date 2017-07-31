@@ -1,0 +1,7 @@
+{
+	"id" : 					2,
+	"name" : 				"Network Topology",
+	"type" :  				"CLASS",
+	"classDefinitions" : 	["Mesh", "P2P", "Star","Bus", "Ring"],
+	"info" : 				"Supported network topology/topologies."
+}

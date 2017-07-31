@@ -1,0 +1,8 @@
+{
+	"ID" : -1,
+	"NAME" : "NULL",
+	"SERVICES" :  "array of services",
+	"DEPENDENCIES" : "array of DEPENDENCIES (IDs of the technologies which are required)",
+	"INFO" : "informatie over de service",
+	"VERSION" : "version number"
+}

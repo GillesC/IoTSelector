@@ -1,0 +1,9 @@
+{
+  "serviceDefId": 3,
+  "technologyID" : 1,
+  "values": [
+    100000,
+    250000
+  ],
+  "info": "(https://en.wikipedia.org/wiki/IEEE_802.15.4)"
+}

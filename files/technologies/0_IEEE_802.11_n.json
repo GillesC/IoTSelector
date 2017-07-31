@@ -1,0 +1,8 @@
+{
+	"id" : 0,
+	"name" : "IEEE 802.11n",
+	"services" :  "array of services (auto filled)",
+	"dependencies" : [],
+	"info" : "informatie over de service",
+	"version" : "version number"
+}

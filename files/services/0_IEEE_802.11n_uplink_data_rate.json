@@ -1,0 +1,9 @@
+{
+  "serviceDefId": 3,
+  "technologyID": 0,
+  "values": [
+    288800000,
+    600000000
+  ],
+  "info": "288.8 Mbit/s (using 4x4 configuration in 20 MHz bandwidth) or 600 Mbit/s (using 4x4 configuration in 40 MHz bandwidth) https://en.wikipedia.org/wiki/Comparison_of_wireless_data_standards"
+}
