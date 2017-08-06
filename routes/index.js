@@ -67,7 +67,7 @@ router.get('/', function(req, res, next) {
     });
     console.log("=========================================");
 
-    res.render('index.jade', {technologies: technologyArray});
+    res.render('index.jade', {technologies: technologyArray, serviceDefinitions : serviceDefArray});
 });
 
 
