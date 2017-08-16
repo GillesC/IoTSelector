@@ -48,7 +48,7 @@ router.get('/', function(req, res, next) {
 
 
     validatedTechnologyArray.forEach(function(tech) {
-        if(tech.version == "version number")console.log(tech.name);
+        if(tech.version === "version number")console.log(tech.name);
         else console.log(tech.name+" v"+tech.version);
       /*
        requiredServicesArray.forEach(function(requiredService){

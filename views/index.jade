@@ -26,7 +26,14 @@ block content
                       for service in technology.services
                           ul.list-group.list-group-flush
                               li.list-group-item #{service.name} #{service.values}
-        select.form-control#selectSerDefName(name='selectSerDefName')
-            for serviceDefinition in serviceDefinitions
-                option(value='#{serviceDefinition.type}') #{serviceDefinition.name}
+        .row
+            .col-lg-6
+                select.form-control#selectSerDefName(name='selectSerDefName')
+                    for serviceDefinition in serviceDefinitions
+                        option(value='#{serviceDefinition.type}') #{serviceDefinition.name}
+            .col-lg-6
+                .type-boolean-input
+                .type-range-input
+                .type-class-input
+            button.btn.btn-primary.btn-lg.btn-block.invisible#submitButton(type='button') Submit
 
