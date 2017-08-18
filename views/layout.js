@@ -41,7 +41,7 @@ $(document).ready(function () {
 
 
 
-    $("#selectSerDefName").change(function () {
+    $("#selectSerDefName").click(function () {
         _type = $(this).val();
         _name = $(this).find(":selected").text();
         _id = $(this).find(':selected').data('id');
@@ -85,7 +85,7 @@ $(document).ready(function () {
             html += "</select>";
             $(".type-class-input").html(html);
 
-            $("#selectClass").change(function () {
+            $("#selectClass").click(function () {
                 $('#submitButton').removeClass('invisible');
             });
 

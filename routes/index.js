@@ -271,15 +271,25 @@ function validateTechnologyServiceAgainstRequiredService(service, requiredServic
                  }
                  console.log("ERROR to few or many service values");
                  */
-                var maxServiceValue, minServiceValue;
-                if (service.values[0] < service.values[1]) {
-                    maxServiceValue = service.values[1];
-                    minServiceValue = service.values[0];
-                } else {
-                    maxServiceValue = service.values[0];
-                    minServiceValue = service.values[1];
+                //TODO herbekijken
+                if (service.values.length === 1 && requiredService.values.length === 2) {
+                    return service.values[0] >= requiredService.values[0] && service.values[0] <= requiredService.values[1];
                 }
-                return minServiceValue >= requiredValue || maxServiceValue <= requiredValue;
+
+                if (service.values.length === 2 && requiredService.values.length === 2) {
+                    var maxServiceValue, minServiceValue;
+                    if (service.values[0] < service.values[1]) {
+                        maxServiceValue = service.values[1];
+                        minServiceValue = service.values[0];
+                    } else {
+                        maxServiceValue = service.values[0];
+                        minServiceValue = service.values[1];
+                    }
+
+
+                    return minServiceValue >= requiredService.values[0] && maxServiceValue <= requiredService.values[1];
+                }
+
                 break;
             case "BOOLEAN":
                 // check ==
@@ -379,13 +389,13 @@ function isValidWithDependencies(technology) {
 
 }
 function removeInvalidTechnologies(technologies) {
-     validatedTechnologyArray = technologies.filter(function (technology) {
-     //console.log();
-     var ok = isValidWithDependencies(technology);
-     //console.log(technology.name +" is OK? " +ok);
-     //console.log();
-     return ok;
-     });
+    validatedTechnologyArray = technologies.filter(function (technology) {
+        //console.log();
+        var ok = isValidWithDependencies(technology);
+        //console.log(technology.name +" is OK? " +ok);
+        //console.log();
+        return ok;
+    });
     return validatedTechnologyArray;
 }
 
