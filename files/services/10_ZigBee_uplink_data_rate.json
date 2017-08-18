@@ -1,0 +1,9 @@
+{
+  "serviceDefId": 3,
+  "technologyID" : 10,
+  "values": [
+    20000,
+    250000
+  ],
+  "info": "(250 kb/s (2.4 GHz); 40 kb/s (915 MHz); 20 kb/s (868 MHz) (https://nl.wikipedia.org/wiki/ZigBee)"
+}

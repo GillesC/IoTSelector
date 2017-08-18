@@ -1,0 +1,8 @@
+{
+  "serviceDefId": 4,
+  "technologyID": 1,
+  "values": [
+    "HIGH"
+  ],
+  "info": "Depending on which security byte is set, the highest possibility is AES-CCM-128 (Data is encrypted. Data authenticity is validated); key id is determined explicitly by the 1Byte Key Index and the 8Byte Key Source; AES-CTR; AES-CBC-MAC; AES-CCM; Access Control List (ACL) "
+}

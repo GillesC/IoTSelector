@@ -2,7 +2,7 @@
   "serviceDefId": 0,
   "technologyID": 9,
   "values": [
-    10,240
+    40,200
   ],
-  "info": ""
+  "info": "40 meters indoor, 200 meters line of sight http://www.rfwireless-world.com/Terminology/Bluetooth-5-vs-bluetooth-4-2.html"
 }

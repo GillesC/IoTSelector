@@ -1,8 +1,8 @@
 {
   "serviceDefId": 5,
-  "technologyID": 1,
+  "technologyID": 3,
   "values": [
-    0
+    1
   ],
   "info": ""
 }
