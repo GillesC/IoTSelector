@@ -1,0 +1,8 @@
+ {
+  "serviceDefId": 4,
+  "technologyID": 4,
+  "values": [
+    "MEDIUM"
+  ],
+  "info": " AES 128-bit shared key encryption (http://www.rfwireless-world.com/Terminology/Dash7-basics.html)"
+}

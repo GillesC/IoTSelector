@@ -1,0 +1,8 @@
+{
+  "serviceDefId": 4,
+  "technologyID": 10,
+  "values": [
+    "HIGH"
+  ],
+  "info": "Key establishment; Key transport; Frame protection (AES-CCM); Device authorization (http://modsec.zimmerle.org/wireless-sec-papers/zigbee%20-%20sec.pdf)"
+}

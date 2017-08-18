@@ -1,0 +1,9 @@
+
+{
+  "serviceDefId": 6,
+  "technologyID": 1,
+  "values": [
+    991,1011
+  ],
+  "info": "depending on the addressinfo slide 17: (https://www.slideshare.net/salahecom/wsn-protocol-802154-together-with-cc2420-seminars) "
+}

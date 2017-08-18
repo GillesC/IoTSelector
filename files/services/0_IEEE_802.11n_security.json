@@ -1,0 +1,10 @@
+{
+  "serviceDefId": 4,
+  "technologyID": 0,
+  "values": [
+    "HIGH"
+  ],
+  "info": "WPAWPA2-PSK (TKIP/AES); WPA2-PSK (AES) -> Best option; WPA2-PSK (TKIP); WPA-PSK (AES); WEP 128 (risky)"
+
+}
+

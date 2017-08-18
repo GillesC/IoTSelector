@@ -2,6 +2,6 @@
 	"id" : 					2,
 	"name" : 				"Network Topology",
 	"type" :  				"CLASS",
-	"classDefinitions" : 	["Mesh", "P2P", "Star","Bus", "Ring"],
+	"classDefinitions" : 	["Mesh", "P2P", "Star","Bus", "Ring", "Scatternet", "Star-of-stars"],
 	"info" : 				"Supported network topology/topologies."
 }

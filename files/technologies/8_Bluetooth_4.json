@@ -4,6 +4,6 @@
 	"icon" : "https://www.bluetooth.com/~/media/images/logos/logo.ashx",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : [],
-	"info" : "informatie over de service",
+	"info" : "Bluetooth 4.2 is developped for the Internet Of Things to support with its low power protocol also it's an upgrade to be faster and to protect the privacy of the device.",
 	"version" : "4"
 }

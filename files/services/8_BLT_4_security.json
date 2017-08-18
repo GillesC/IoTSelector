@@ -1,0 +1,8 @@
+{
+  "serviceDefId": 4,
+  "technologyID": 8,
+  "values": [
+    "HIGH"
+  ],
+  "info": "legacy authentication; secure authentication; LE Secure Connections pairing model; Public/private key pair; Secure Connection Key; AES-CCM cryptography; signing the data with a CSRK; Privacy: changing the Bluetooth device address on a frequent basis"
+}

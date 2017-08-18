@@ -1,0 +1,8 @@
+{
+  "serviceDefId": 5,
+  "technologyID": 1,
+  "values": [
+    0
+  ],
+  "info": "802.15.4 is used for LR-WPAN"
+}

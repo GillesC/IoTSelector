@@ -2,8 +2,8 @@
   "serviceDefId": 3,
   "technologyID": 0,
   "values": [
-    288800000,
+    6500000,
     600000000
   ],
-  "info": "288.8 Mbit/s (using 4x4 configuration in 20 MHz bandwidth) or 600 Mbit/s (using 4x4 configuration in 40 MHz bandwidth) https://en.wikipedia.org/wiki/Comparison_of_wireless_data_standards"
+  "info": "6.5 Mbit/s (using 1 spation stream with BPSK modulation in 20 MHz bandwidth and guard interval is 800ns) or 600 Mbit/s (using 4 spatial streams in 40 MHz bandwidth and guard interval is 400ns) https://en.wikipedia.org/wiki/IEEE_802.11n-2009"
 }
