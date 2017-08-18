@@ -7,22 +7,23 @@ block content
         .row
             .jumbotron.jumbotron-fluid
                 .container
-                    h1.display-3 Selected Requirements
-                    div.col-lg-6
-                        select.form-control.custom-select#selectSerDefName(name='selectSerDefName')
-                            for serviceDefinition in serviceDefinitions
-                                option(value='#{serviceDefinition.type}' data-id='#{serviceDefinition.id}') #{serviceDefinition.name}
-                    div.col-lg-6
-                        .type-boolean-input
-                        .type-range-input
-                        .type-class-input
-                    button.btn.btn-primary.btn-lg.btn-block.invisible#submitButton(type='button') Submit
-                    table.table
-                        thead
-                            tr
-                                th Name
-                                th Values
-                        tbody#requirements
+                    .row.vertical-align
+                        h1.display-3 Selected Requirements
+                        div.col-lg-6.col-md-6
+                            select.form-control.custom-select#selectSerDefName(name='selectSerDefName')
+                                for serviceDefinition in serviceDefinitions
+                                    option(value='#{serviceDefinition.type}' data-id='#{serviceDefinition.id}') #{serviceDefinition.name}
+                        div.col-lg-6.col-md-6
+                            .type-boolean-input
+                            .type-range-input
+                            .type-class-input
+                        button.btn.btn-primary.btn-lg.btn-block.invisible.center-block#submitButton(type='button') Submit
+                        table.table
+                            thead
+                                tr
+                                    th Name
+                                    th Values
+                            tbody#requirements
 
 
 

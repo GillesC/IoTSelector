@@ -24,31 +24,31 @@ router.post('/filteredTechnologies', function (req, res, next) {
     console.log("== Requirements ==");
 
     req.body.requirements.forEach(function (reqService) {
-       if(Array.isArray(requiredServicesArray[reqService.serviceDefId])){
-           var inArray = !requiredServicesArray[reqService.serviceDefId].every(function(req){
-               return !(req.serviceDefId === reqService.serviceDefId && req.values === reqService.values);
-           });
-           if(!inArray) requiredServicesArray[reqService.serviceDefId].push(reqService);
-       }else{
-           requiredServicesArray[reqService.serviceDefId] = [reqService];
-       }
+        if (Array.isArray(requiredServicesArray[reqService.serviceDefId])) {
+            var inArray = !requiredServicesArray[reqService.serviceDefId].every(function (req) {
+                return !(req.serviceDefId === reqService.serviceDefId && req.values === reqService.values);
+            });
+            if (!inArray) requiredServicesArray[reqService.serviceDefId].push(reqService);
+        } else {
+            requiredServicesArray[reqService.serviceDefId] = [reqService];
+        }
 
-       var serviceDef = serviceDefArray[reqService.serviceDefId];
-       console.log(serviceDef.name + " type: " + serviceDef.type);
+        var serviceDef = serviceDefArray[reqService.serviceDefId];
+        console.log(serviceDef.name + " type: " + serviceDef.type);
 
-       var metaData = "";
+        var metaData = "";
 
-       if (exist(reqService.compare)) {
-           metaData += " (" + reqService.compare + ")";
+        if (exist(reqService.compare)) {
+            metaData += " (" + reqService.compare + ")";
 
-       }
-       if (serviceDef.type === "CLASS") metaData += " [" + serviceDef.classDefinitions + "] ";
+        }
+        if (serviceDef.type === "CLASS") metaData += " [" + serviceDef.classDefinitions + "] ";
 
-       console.log("\t" + reqService.values + metaData);
+        console.log("\t" + reqService.values + metaData);
 
-   });
-   console.log("=================");
-   console.log(requiredServicesArray);
+    });
+    console.log("=================");
+    console.log(requiredServicesArray);
 
 
     technologyArray.forEach(function (technology) {
@@ -57,7 +57,7 @@ router.post('/filteredTechnologies', function (req, res, next) {
     });
 
 // check if every technology with its dependencies is validated
-    var validatedTechnologyArray  = removeInvalidTechnologies(technologyArray);
+    var validatedTechnologyArray = removeInvalidTechnologies(technologyArray);
 
     console.log("=========== GOOD technologies ===========");
 
@@ -85,7 +85,7 @@ router.post('/filteredTechnologies', function (req, res, next) {
 
     //console.log(validatedTechnologyArray);
 
-    res.render('technologies.jade', {technologies: technologyArray, serviceDefinitions: serviceDefArray});
+    res.render('technologies.jade', {technologies: validatedTechnologyArray, serviceDefinitions: serviceDefArray});
 });
 
 
@@ -198,11 +198,11 @@ function readContents() {
      * Read required services
      */
     /*
-    fs.readdirSync(requiredServicesPath).forEach(function (requiredServiceFileName) {
-        var requiredService = jsonfile.readFileSync(requiredServicesPath + "\\" + requiredServiceFileName);
-        requiredServicesArray.push(requiredService);
-    });
-    */
+     fs.readdirSync(requiredServicesPath).forEach(function (requiredServiceFileName) {
+     var requiredService = jsonfile.readFileSync(requiredServicesPath + "\\" + requiredServiceFileName);
+     requiredServicesArray.push(requiredService);
+     });
+     */
 
 
 }
@@ -231,46 +231,46 @@ function validateTechnologyServiceAgainstRequiredService(service, requiredServic
             case "RANGE":
                 //TODO
                 /*
-                if (typeof requiredService.compare === 'undefined') {
-                    console.log("How do I need to compare? " + service.name)
-                }
-                var compareStr = requiredService.compare;
+                 if (typeof requiredService.compare === 'undefined') {
+                 console.log("How do I need to compare? " + service.name)
+                 }
+                 var compareStr = requiredService.compare;
 
-                // checks <=
-                var maxServiceValue, minServiceValue;
-                if (service.values.length == 1) {
-                    if (compareStr === "=") return (service.values[0] === requiredService.values[0]);
-                    if (compareStr === ">=") return (service.values[0] >= requiredService.values[0]);
-                    if (compareStr === "<=") return (service.values[0] <= requiredService.values[0]);
-                    if (compareStr === "<") return (service.values[0] < requiredService.values[0]);
-                    if (compareStr === ">") return (service.values[0] > requiredService.values[0]);
-                } else if (service.values.length == 2) {
-                    if (service.values[0] < service.values[1]) {
-                        maxServiceValue = service.values[1];
-                        minServiceValue = service.values[0];
-                    } else {
-                        maxServiceValue = service.values[0];
-                        minServiceValue = service.values[1];
-                    }
+                 // checks <=
+                 var maxServiceValue, minServiceValue;
+                 if (service.values.length == 1) {
+                 if (compareStr === "=") return (service.values[0] === requiredService.values[0]);
+                 if (compareStr === ">=") return (service.values[0] >= requiredService.values[0]);
+                 if (compareStr === "<=") return (service.values[0] <= requiredService.values[0]);
+                 if (compareStr === "<") return (service.values[0] < requiredService.values[0]);
+                 if (compareStr === ">") return (service.values[0] > requiredService.values[0]);
+                 } else if (service.values.length == 2) {
+                 if (service.values[0] < service.values[1]) {
+                 maxServiceValue = service.values[1];
+                 minServiceValue = service.values[0];
+                 } else {
+                 maxServiceValue = service.values[0];
+                 minServiceValue = service.values[1];
+                 }
 
-                    // if the required values is in the [ ] range
-                    //   \/
-                    //  [  ]
-                    if (requiredService.compare === ">="
-                        || requiredService.compare === "<="
-                        || requiredService.compare === "=") {
-                        return minServiceValue >= requiredValue || maxServiceValue <= requiredValue;
-                    }
-                    //   \/
-                    //      [  ]
-                    else if (requiredService.compare === "<") return minServiceValue > requiredValue;
-                    //       \/
-                    //  [  ]
-                    else if (requiredService.compare === ">") return maxServiceValue < requiredValue;
-                    else console.log("ERROR wrong compare value");
-                }
-                console.log("ERROR to few or many service values");
-                */
+                 // if the required values is in the [ ] range
+                 //   \/
+                 //  [  ]
+                 if (requiredService.compare === ">="
+                 || requiredService.compare === "<="
+                 || requiredService.compare === "=") {
+                 return minServiceValue >= requiredValue || maxServiceValue <= requiredValue;
+                 }
+                 //   \/
+                 //      [  ]
+                 else if (requiredService.compare === "<") return minServiceValue > requiredValue;
+                 //       \/
+                 //  [  ]
+                 else if (requiredService.compare === ">") return maxServiceValue < requiredValue;
+                 else console.log("ERROR wrong compare value");
+                 }
+                 console.log("ERROR to few or many service values");
+                 */
                 var maxServiceValue, minServiceValue;
                 if (service.values[0] < service.values[1]) {
                     maxServiceValue = service.values[1];
@@ -337,8 +337,8 @@ function validateTechnology(technology, requiredServicesArray) {
         // for each required Service
         // have at least 1 service (from the same definition) which matches
 
-        var isValidated = requiredServicesArray.every(function(requiredServicesWithSameDefArray){
-            return requiredServicesWithSameDefArray.some(function(requiredService){
+        var isValidated = requiredServicesArray.every(function (requiredServicesWithSameDefArray) {
+            return requiredServicesWithSameDefArray.some(function (requiredService) {
                 //console.log("Check Technology "+technology.name+" against requiredService "+requiredService.serviceDefId);
                 var ok = validateTechnologyAgainstService(technology, requiredService);
                 //if(ok) console.log("-------- "+technology.name+" passed requirement "+serviceDefArray[requiredService.serviceDefId].name);
@@ -379,16 +379,13 @@ function isValidWithDependencies(technology) {
 
 }
 function removeInvalidTechnologies(technologies) {
-    //TODO for now do not check the dependencies
-    /*
-    validatedTechnologyArray = technologies.filter(function (technology) {
-        //console.log();
-        var ok = isValidWithDependencies(technology);
-        //console.log(technology.name +" is OK? " +ok);
-        //console.log();
-        return ok;
-    });
-    */
+     validatedTechnologyArray = technologies.filter(function (technology) {
+     //console.log();
+     var ok = isValidWithDependencies(technology);
+     //console.log(technology.name +" is OK? " +ok);
+     //console.log();
+     return ok;
+     });
     return validatedTechnologyArray;
 }
 

@@ -60,7 +60,7 @@ $(document).ready(function () {
         if (type === "RANGE") {
             $(".type-range-input").html('<div class="row"><div class="input-group">\n' +
                 '  <span class="input-group-addon">min</span>\n' +
-                '  <input type="number" class="form-control" id="range_min" aria-label="minimum">\n' +
+                '  <input type="number" class="form-control" id="range_min" aria-label="minimum" >\n' +
                 '</div></div>' +
                 '<div class="row"><div class="input-group">\n' +
                 '  <span class="input-group-addon">max</span>\n' +
@@ -167,19 +167,28 @@ function getRequirements(){
 }
 
 function pushToRequirements(object, overwrite){
-
+    console.log("-------- push to ---------");
+    console.log(object);
+    console.log(overwrite);
     var requirements = getRequirements();
     if(overwrite) {
         // delete old requirement
         requirements = requirements.filter(function(el) { return el.serviceDefId != object.serviceDefId; });
     }
-    var inArray = requirements.every(function(req){
-        return !(req.serviceDefId === object.serviceDefId && req.values === object.values);
+    var inArray = !requirements.every(function(req){
+        var diffId = req.serviceDefId != object.serviceDefId;
+        var diffValue = false;
+        if(typeof req.values[0] === 'string' && typeof object.values[0] === 'string'){
+            diffValue = (req.values[0].localeCompare(object.values[0]) !== 0);
+        }
+        return diffId || diffValue;
     });
 
     if(!inArray) requirements.push(object);
+    else console.log("already in array");
     localStorage.setItem('requirements', JSON.stringify(requirements));
     console.log("Stored: " + localStorage.getItem('requirements'));
+    console.log("-------- push to ---------");
 }
 
 
