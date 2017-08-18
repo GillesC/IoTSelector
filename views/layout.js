@@ -173,7 +173,11 @@ function pushToRequirements(object, overwrite){
         // delete old requirement
         requirements = requirements.filter(function(el) { return el.serviceDefId != object.serviceDefId; });
     }
-    requirements.push(object);
+    var inArray = requirements.every(function(req){
+        return !(req.serviceDefId == object.serviceDefId && req.values == object.values);
+    });
+
+    if(!inArray) requirements.push(object);
     localStorage.setItem('requirements', JSON.stringify(requirements));
     console.log("Stored: " + localStorage.getItem('requirements'));
 }
