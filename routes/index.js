@@ -19,14 +19,20 @@ router.get('/', function (req, res, next) {
 
 
 router.post('/filteredTechnologies', function (req, res, next) {
+    var requiredServicesArray = [];
     // filter technologies and render them
-    requiredServicesArray = req.body.requirements;
-
-    res.render('technologies.jade', {technologies: technologyArray, serviceDefinitions: serviceDefArray});
     console.log("== Requirements ==");
 
-    /*
-   requiredServicesArray.forEach(function (reqService) {
+    req.body.requirements.forEach(function (reqService) {
+       if(Array.isArray(requiredServicesArray[reqService.serviceDefId])){
+           var inArray = !requiredServicesArray[reqService.serviceDefId].every(function(req){
+               return !(req.serviceDefId === reqService.serviceDefId && req.values === reqService.values);
+           });
+           if(!inArray) requiredServicesArray[reqService.serviceDefId].push(reqService);
+       }else{
+           requiredServicesArray[reqService.serviceDefId] = [reqService];
+       }
+
        var serviceDef = serviceDefArray[reqService.serviceDefId];
        console.log(serviceDef.name + " type: " + serviceDef.type);
 
@@ -40,44 +46,44 @@ router.post('/filteredTechnologies', function (req, res, next) {
 
        console.log("\t" + reqService.values + metaData);
 
-
    });
    console.log("=================");
-   */
+   console.log(requiredServicesArray);
 
 
-   technologyArray.forEach(function (technology) {
-       validateTechnology(technology);
-   });
+    technologyArray.forEach(function (technology) {
+        delete technology.validated;
+        validateTechnology(technology, requiredServicesArray);
+    });
 
 // check if every technology with its dependencies is validated
-   validatedTechnologyArray = removeInvalidTechnologies(technologyArray);
+    var validatedTechnologyArray  = removeInvalidTechnologies(technologyArray);
 
-   console.log("=========== GOOD technologies ===========");
+    console.log("=========== GOOD technologies ===========");
 
 
-   validatedTechnologyArray.forEach(function (tech) {
-       if (tech.version === "version number") console.log(tech.name);
-       else console.log(tech.name + " v" + tech.version);
-       /*
-        requiredServicesArray.forEach(function(requiredService){
-        if(technologyContainsService(requiredService, tech)){
-        console.log("\t"+serviceDefArray[requiredService.serviceDefId].name+" OK");
-        }else{
-        console.log("\t"+serviceDefArray[requiredService.serviceDefId].name+" N.A.");
-        }
-        });
-        */
-       /*
-        console.log("- - - - - - - ");
-        console.log(tech);
-        console.log("- - - - - - - ");
-        */
-   });
-   console.log("=========================================");
+    validatedTechnologyArray.forEach(function (tech) {
+        if (tech.version === "version number") console.log(tech.name);
+        else console.log(tech.name + " v" + tech.version);
+        /*
+         requiredServicesArray.forEach(function(requiredService){
+         if(technologyContainsService(requiredService, tech)){
+         console.log("\t"+serviceDefArray[requiredService.serviceDefId].name+" OK");
+         }else{
+         console.log("\t"+serviceDefArray[requiredService.serviceDefId].name+" N.A.");
+         }
+         });
+         */
+        /*
+         console.log("- - - - - - - ");
+         console.log(tech);
+         console.log("- - - - - - - ");
+         */
+    });
 
-   //console.log(validatedTechnologyArray);
+    console.log("=========================================");
 
+    //console.log(validatedTechnologyArray);
 
     res.render('technologies.jade', {technologies: technologyArray, serviceDefinitions: serviceDefArray});
 });
@@ -86,7 +92,6 @@ router.post('/filteredTechnologies', function (req, res, next) {
 /**********************************************************/
 var technologyArray = [];
 var serviceDefArray = [];
-var requiredServicesArray = [];
 
 function readContents() {
     const jsonfile = require('jsonfile');
@@ -203,13 +208,6 @@ function readContents() {
 }
 
 /**
- * validate technologies based on a use-case file
- * this file should contain required services
- */
-
-var validated = []; // possible good technologies
-
-/**
  * Return true if service is good or if the service is not of the same type of that of the requiredService
  * @param service
  * @param requiredService
@@ -225,23 +223,14 @@ function validateTechnologyServiceAgainstRequiredService(service, requiredServic
         var requiredValue = requiredService.values[0];
         switch (serviceType) {
             case "CLASS":
-                // if compare not defined just compare required and service
-                if (typeof requiredService.compare === 'undefined') {
-                    return (service.values[0] === requiredService.values[0]);
-                }
-                // checks >=
-                var serviceVal = service.values[0];
-                if (requiredService.compare == ">=") return requiredValue <= serviceVal;
-                else if (requiredService.compare == "<=") return requiredValue >= serviceVal;
-                else if (requiredService.compare == "<") return requiredValue > serviceVal;
-                else if (requiredService.compare == ">") return requiredValue < serviceVal;
-                else return true;
+                return (service.values[0] === requiredService.values[0]);
                 break;
             case "VALUE":
-                // check ==
                 return (service.values[0] === requiredService.values[0]);
                 break;
             case "RANGE":
+                //TODO
+                /*
                 if (typeof requiredService.compare === 'undefined') {
                     console.log("How do I need to compare? " + service.name)
                 }
@@ -281,7 +270,16 @@ function validateTechnologyServiceAgainstRequiredService(service, requiredServic
                     else console.log("ERROR wrong compare value");
                 }
                 console.log("ERROR to few or many service values");
-                return true;
+                */
+                var maxServiceValue, minServiceValue;
+                if (service.values[0] < service.values[1]) {
+                    maxServiceValue = service.values[1];
+                    minServiceValue = service.values[0];
+                } else {
+                    maxServiceValue = service.values[0];
+                    minServiceValue = service.values[1];
+                }
+                return minServiceValue >= requiredValue || maxServiceValue <= requiredValue;
                 break;
             case "BOOLEAN":
                 // check ==
@@ -328,27 +326,30 @@ function validateTechnologyAgainstService(technology, requiredService) {
  * @param technology
  * @returns {boolean|*}
  */
-function validateTechnology(technology) {
+function validateTechnology(technology, requiredServicesArray) {
     // if technology is alreade validated
     // return the validation state
     if (typeof technology.validated !== 'undefined') {
         return technology.validated;
     } else {
-        // first time the technology is validated
-        // return false if at least one is false
-        // TODO : alle zelfde serviceDef te samen nemen van het type class
-        // TODO : er moet minstens 1 voldoen van die groep (i.e. OF-relatie tussen zelfde seriveDef met type class)
-        // TODO: VB: network: P2P or Mesh
-        var validated = requiredServicesArray.every(function (requiredService) {
-            //console.log("Check Technology "+technology.name+" against requiredService "+requiredService.serviceDefId);
-            var ok = validateTechnologyAgainstService(technology, requiredService);
-            //if(ok) console.log("-------- "+technology.name+" passed requirement "+serviceDefArray[requiredService.serviceDefId].name);
-            //else console.log("-------- "+technology.name+" NOT passed requirement "+serviceDefArray[requiredService.serviceDefId].name);
-            return ok;
+
+
+        // for each required Service
+        // have at least 1 service (from the same definition) which matches
+
+        var isValidated = requiredServicesArray.every(function(requiredServicesWithSameDefArray){
+            return requiredServicesWithSameDefArray.some(function(requiredService){
+                //console.log("Check Technology "+technology.name+" against requiredService "+requiredService.serviceDefId);
+                var ok = validateTechnologyAgainstService(technology, requiredService);
+                //if(ok) console.log("-------- "+technology.name+" passed requirement "+serviceDefArray[requiredService.serviceDefId].name);
+                //else console.log("-------- "+technology.name+" NOT passed requirement "+serviceDefArray[requiredService.serviceDefId].name);
+                return ok;
+            });
         });
+
         // if technology is validated -> set property validated on true
-        technology.validated = validated;
-        return validated;
+        technology.validated = isValidated;
+        return isValidated;
     }
 }
 
@@ -378,6 +379,8 @@ function isValidWithDependencies(technology) {
 
 }
 function removeInvalidTechnologies(technologies) {
+    //TODO for now do not check the dependencies
+    /*
     validatedTechnologyArray = technologies.filter(function (technology) {
         //console.log();
         var ok = isValidWithDependencies(technology);
@@ -385,6 +388,7 @@ function removeInvalidTechnologies(technologies) {
         //console.log();
         return ok;
     });
+    */
     return validatedTechnologyArray;
 }
 

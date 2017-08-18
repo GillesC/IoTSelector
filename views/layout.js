@@ -174,7 +174,7 @@ function pushToRequirements(object, overwrite){
         requirements = requirements.filter(function(el) { return el.serviceDefId != object.serviceDefId; });
     }
     var inArray = requirements.every(function(req){
-        return !(req.serviceDefId == object.serviceDefId && req.values == object.values);
+        return !(req.serviceDefId === object.serviceDefId && req.values === object.values);
     });
 
     if(!inArray) requirements.push(object);
