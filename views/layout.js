@@ -1,9 +1,11 @@
 //console.log(serviceDefinitions);
 function getFilteredTechnologies() {
+    var reqs = getRequirements();
+    console.log("Sending "+reqs)
     $.ajax({
         type: "POST",
         url: "/filteredTechnologies",
-        data: JSON.stringify({requirements : getRequirements()}),
+        data: JSON.stringify({requirements : reqs}),
         contentType: "application/json; charset=utf-8",
         dataType: "html",
         error: function() {
@@ -131,27 +133,47 @@ $(document).ready(function () {
         clearSelectionBar();
     });
 
-    function showRequirements() {
-        var reqStr = localStorage.getItem('requirements');
-        if(reqStr){
-            req = JSON.parse(reqStr);
-            console.log(req);
-            var tr = "";
-            req.forEach(function(el){
-                console.log(el);
-                console.log(el.name);
-                tr += '<tr>';
-                tr +=  '<th scope="row">' + el.name + "</th>";
-                tr +=  "<td>" + el.values + "</td>";
-                tr +=  '</tr>';
-            });
 
-
-            $("#requirements").html(tr);
-        }
-    }
 
 });
+
+function showRequirements() {
+    var reqStr = localStorage.getItem('requirements');
+    if(reqStr){
+        req = JSON.parse(reqStr);
+        console.log(req);
+        var tr = "";
+        req.forEach(function(el){
+            console.log(el);
+            console.log(el.name);
+            tr += '<tr>';
+            tr +=  '<th scope="row" id="'+el.name+'">' + el.name + "</th>";
+            tr +=  "<td>" + el.values + "</td>";
+            tr += '<td><a class="fa fa-times" onclick="deleteRequirement(\''+el.name+'\')" aria-hidden="true"></a></td>';
+            tr +=  '</tr>';
+        });
+        $("#requirements").html(tr);
+    }
+}
+
+function refresh() {
+    showRequirements();
+    getFilteredTechnologies();
+    clearSelectionBar();
+}
+
+function deleteRequirement(requirementName){
+    console.log("Delete requiremens "+requirementName);
+    var reqs = getRequirements();
+    var filteredReqs = [];
+
+    reqs.forEach(function(req){
+        if(req.name.toString().localeCompare(requirementName) !==0 ) filteredReqs.push(req);
+    });
+    saveRequirements(filteredReqs);
+    refresh();
+
+}
 
 
 function getRequirements(){
@@ -186,6 +208,11 @@ function pushToRequirements(object, overwrite){
 
     if(!inArray) requirements.push(object);
     else console.log("already in array");
+    saveRequirements(requirements);
+
+}
+
+function saveRequirements(requirements){
     localStorage.setItem('requirements', JSON.stringify(requirements));
     console.log("Stored: " + localStorage.getItem('requirements'));
     console.log("-------- push to ---------");

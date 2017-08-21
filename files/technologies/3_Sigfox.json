@@ -3,6 +3,6 @@
 	"name" : "SIGFOX",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : "array of DEPENDENCIES (IDs of the technologies which are required)",
-	"info" : "informatie over de service",
-	"version" : "version number"
+	"icon" : "https://www.the-iot-marketplace.com/media/wysiwyg/connectivity/Sigfox_Logo_RGB_1.1489668896.png",
+	"info" : "informatie over de service"
 }

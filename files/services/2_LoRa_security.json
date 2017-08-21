@@ -2,7 +2,7 @@
   "serviceDefId": 4,
   "technologyID": 2,
   "values": [
-    1
+    "HIGH"
   ],
   "info": "LoRa and the LoRaWAN protocol allow secure solutions to be developed that protect the company and the end user from cyber-attacks. It should be clear to all developers of LoRa solutions however, that using LoRa does not guarantee security. A key area of concern for every solution will be around key storage. Secure systems can be developed by understand LoRa’s security features, but knowing that they are not a panacea to security. (https://labs.mwrinfosecurity.com/assets/BlogFiles/mwri-LoRa-security-guide-1.2-2016-03-22.pdf)"
 }

@@ -1,8 +1,0 @@
-{
-  "serviceDefId": 4,
-  "technologyID": 11,
-  "values": [
-    "High"
-  ],
-  "info": "No latency or additional power consumption for devices with S2.; Strong AES-128 encryption.; Improved protection against eavesdropping using the industry-standard Elliptic Curve Diffie-Hellmann (ECDH) key exchange mechanism. This makes it impossible to decipher the network key.; Authenticated deployments that remove the “man-in-the-middle” attack vector—devices can be physically authenticated by PIN code during inclusion. An option QR code can also be supported.; Tunneling all Z/IP traffic through a secure TLS 1.1 tunnel eliminates cloud vulnerability.(http://www.electronicdesign.com/communications/qa-s2-s-impact-z-wave-and-iot-security)"
-}

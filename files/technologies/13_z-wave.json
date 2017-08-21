@@ -3,6 +3,5 @@
 	"name" : "z-wave",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : [],
-	"info" : "informatie over de service",
-	"version" : "version number"
+	"info" : "informatie over de service"
 }

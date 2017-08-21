@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -30,4 +30,22 @@ select{
 .vertical-align {
   display: flex;
   align-items: center;
+}
+
+.service-checked{
+  color: green;
+}
+
+.pull-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+}
+
+.green{
+  color : green;
+}
+
+.light-green-background{
+  background-color: rgba(208, 233, 198, 0.3);
 }

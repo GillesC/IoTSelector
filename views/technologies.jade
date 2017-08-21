@@ -6,13 +6,12 @@
             else
                 img.card-img-top.img-fluid
             .card-block
-                h4.card-title #{technology.name}
+                h4.card-title #{technology.name} &nbsp;
+                    if(typeof (technology.version) !== 'undefined')
+                       span.badge.badge-primary #{technology.version}
                 p.card-text
                     | #{technology.info}
             ul.list-group.list-group-flush
-                li.list-group-item Version #{technology.version}
-                li.list-group-item ID #{technology.id}
-                li.list-group-item Vestibulum at eros
             if(typeof (technology.dependencies) !== 'undefined')
                 if(technology.dependencies.length)
                     .card-block
@@ -20,4 +19,26 @@
                         a.card-link(href='#') #{dependency.name}
             for service in technology.services
                 ul.list-group.list-group-flush
-                    li.list-group-item #{service.name} #{service.values}
+                    - var badge
+                    case service.type
+                        when "BOOLEAN"
+                            - badge = '<span class="badge badge-default">B</span>'
+                        when "CLASS"
+                            - badge = '<span class="badge badge-primary">C</span>'
+                        when "RANGE"
+                            - badge = '<span class="badge badge-success">R</span>'
+                        when "VALUE"
+                            - badge = '<span class="badge badge-info">V</span>'
+
+                    if(service.checked)
+                        li.list-group-item.light-green-background
+                            if(service.checked)
+                                i.fa.fa-check.pull-right.green(aria-hidden="true")
+                                |  &nbsp; &nbsp; &nbsp;
+                             !{badge} &nbsp; #{service.name} #{service.values}
+                    else
+                        li.list-group-item
+                            if(service.checked)
+                                i.fa.fa-check.pull-right.green(aria-hidden="true")
+                                |  &nbsp; &nbsp; &nbsp;
+                             !{badge} &nbsp; #{service.name} #{service.values}

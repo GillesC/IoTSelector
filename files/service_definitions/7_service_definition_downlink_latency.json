@@ -2,6 +2,6 @@
 	"id" : 					7,
 	"name" : 				"Downlink latency control",
 	"type" :  				"CLASS",
-	"classDefinitions" : 	["FINE (0) ", "COARSE (1)", "NONE (2)"],
+	"classDefinitions" : 	["FINE", "COARSE", "NONE"],
 	"info" : 				""
 }

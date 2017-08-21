@@ -19,7 +19,9 @@ router.get('/', function (req, res, next) {
 
 
 router.post('/filteredTechnologies', function (req, res, next) {
+    readContents();
     var requiredServicesArray = [];
+
     // filter technologies and render them
     console.log("== Requirements ==");
 
@@ -97,7 +99,7 @@ function readContents() {
     const jsonfile = require('jsonfile');
     const fs = require('fs');
 
-    const rootFolder = "./files";
+    const rootFolder = __dirname + "/files";
 
     const serviceDefDir = "service_definitions";
     const serviceDefPath = rootFolder + '/' + serviceDefDir;
@@ -213,6 +215,7 @@ function readContents() {
  * @param requiredService
  */
 function validateTechnologyServiceAgainstRequiredService(service, requiredService) {
+    delete service.checked;
     // if the serviceDefId not the same return true (don't compare diff. services)
     if (service.serviceDefId != requiredService.serviceDefId) return true;
 
@@ -220,13 +223,14 @@ function validateTechnologyServiceAgainstRequiredService(service, requiredServic
     var requiredServiceType = serviceDefArray[requiredService.serviceDefId].type;
 
     if (serviceType == requiredServiceType) {
-        var requiredValue = requiredService.values[0];
         switch (serviceType) {
             case "CLASS":
-                return (service.values[0] === requiredService.values[0]);
+                service.checked = (service.values[0].toString().localeCompare(requiredService.values[0].toString()) === 0);
+                return service.checked;
                 break;
             case "VALUE":
-                return (service.values[0] === requiredService.values[0]);
+                service.checked = (service.values[0] === requiredService.values[0]);
+                return service.checked;
                 break;
             case "RANGE":
                 //TODO
@@ -273,7 +277,8 @@ function validateTechnologyServiceAgainstRequiredService(service, requiredServic
                  */
                 //TODO herbekijken
                 if (service.values.length === 1 && requiredService.values.length === 2) {
-                    return service.values[0] >= requiredService.values[0] && service.values[0] <= requiredService.values[1];
+                    service.checked = service.values[0] >= requiredService.values[0] && service.values[0] <= requiredService.values[1];
+                    return service.checked;
                 }
 
                 if (service.values.length === 2 && requiredService.values.length === 2) {
@@ -287,14 +292,16 @@ function validateTechnologyServiceAgainstRequiredService(service, requiredServic
                     }
 
 
-                    return minServiceValue >= requiredService.values[0] && maxServiceValue <= requiredService.values[1];
+                    service.checked = minServiceValue >= requiredService.values[0] && maxServiceValue <= requiredService.values[1];
+                    return service.checked;
                 }
 
                 break;
             case "BOOLEAN":
                 // check ==
                 //console.log("\t\t\t serviceValue is "+(!!service.values[0])+ " required is "+(!!requiredService.values[0]));
-                return (!!service.values[0] === !!requiredService.values[0]);
+                service.checked = (!!service.values[0] === !!requiredService.values[0]);
+                return service.checked;
                 break;
             default:
                 return true;
@@ -380,9 +387,14 @@ function isValidWithDependencies(technology) {
             } else {
                 // return true if one or more isValid
                 // otherwise return false
-                return technology.dependencies.some(function (technologyDependency) {
-                    return isValidWithDependencies(technologyDependency);
-                });
+                if (Array.isArray(technology.dependencies.length)){
+                    return technology.dependencies.some(function (technologyDependency) {
+                        return isValidWithDependencies(technologyDependency);
+                    });
+                }else{
+                    return true;
+                }
+
             }
         }
     }

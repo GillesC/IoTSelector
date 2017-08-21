@@ -1,8 +1,8 @@
 {
   "classDefinitions": [
-    "LOW (0)",
-    "MEDIUM (1)",
-    "HIGH (2)"
+    "LOW",
+    "MEDIUM",
+    "HIGH"
   ],
   "id": 4,
   "info": "Security measures in this technology (LOW (0) - MEDIUM (1) - HIGH (2))",

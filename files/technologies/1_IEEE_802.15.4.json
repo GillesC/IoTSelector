@@ -4,6 +4,5 @@
 	"name" : "IEEE 802.15.4",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : "array of DEPENDENCIES (IDs of the technologies which are required)",
-	"info" : "informatie over de service",
-	"version" : "version number"
+	"info" : "informatie over de service"
 }
