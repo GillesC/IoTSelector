@@ -5,11 +5,13 @@ in the scope of an [IWT/VlAIO](http://www.vlaio.be/english) Tetra project [SMIoT
 which aids in developing rich IoT environments.
 
 # Structure of Selector
-Comming soon
+More information soon
 
 ## Adding technologies to the tool
+Comming soon
 
 ## Adding service definitions to the tool
+Comming soon
 
 ## Adding services to technologies
-
+Comming soon
