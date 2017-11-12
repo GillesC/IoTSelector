@@ -133,7 +133,7 @@ function readContents() {
      */
     fs.readdirSync(technologiesPath).forEach(function (technologyFileName) {
         //console.log(technologyFileName);
-        var technology = jsonfile.readFileSync(technologiesPath + "\\" + technologyFileName);
+        var technology = jsonfile.readFileSync(technologiesPath + "/" + technologyFileName);
         technologyArray[technology.id] = technology;
         technology.services = [];
         //console.log(technology);
@@ -148,7 +148,7 @@ function readContents() {
      */
     fs.readdirSync(serviceDefPath).forEach(function (serviceDefFileName) {
         //console.log(serviceDefFileName);
-        var serviceDef = jsonfile.readFileSync(serviceDefPath + "\\" + serviceDefFileName);
+        var serviceDef = jsonfile.readFileSync(serviceDefPath + "/" + serviceDefFileName);
         serviceDefArray[serviceDef.id] = serviceDef;
         //console.log(serviceDef);
     });
@@ -162,7 +162,7 @@ function readContents() {
      */
     fs.readdirSync(servicesPath).forEach(function (serviceFileName) {
         //console.log(serviceFileName);
-        var service = jsonfile.readFileSync(servicesPath + "\\" + serviceFileName);
+        var service = jsonfile.readFileSync(servicesPath + "/" + serviceFileName);
         service.name = serviceDefArray[service.serviceDefId].name;
         service.type = serviceDefArray[service.serviceDefId].type;
         var technology = technologyArray[service.technologyID];
