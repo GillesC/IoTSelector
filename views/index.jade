@@ -6,11 +6,18 @@ block content
     .jumbotron.jumbotron-fluid
         h1.display-3 Selected Requirements
         .row.vertical-align
-            div.col-lg-5.col-md-5
-                select.form-control.custom-select#selectSerDefName(name='selectSerDefName')
-                    for serviceDefinition in serviceDefinitions
-                        option(value='#{serviceDefinition.type}' data-id='#{serviceDefinition.id}') #{serviceDefinition.name}
-            div.col-lg-5.col-md-5
+            div.col-lg-6.col-md-6
+                div.row
+                    div.col-lg-10.col-md-10
+                        select.form-control.custom-select#selectSerDefName(name='selectSerDefName')
+                            for serviceDefinition in serviceDefinitions
+                                if (typeof(serviceDefinition.unit) !== 'undefined')
+                                    option(value='#{serviceDefinition.type}' data-id='#{serviceDefinition.id}') #{serviceDefinition.name} [#{serviceDefinition.unit}]
+                                else
+                                    option(value='#{serviceDefinition.type}' data-id='#{serviceDefinition.id}') #{serviceDefinition.name}
+                    div.col-lg-2.col-md-2
+                        .unit
+            div.col-lg-4.col-md-4
                 .type-boolean-input
                 .type-range-input
                 .type-class-input

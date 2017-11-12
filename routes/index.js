@@ -99,7 +99,7 @@ function readContents() {
     const jsonfile = require('jsonfile');
     const fs = require('fs');
 
-    const rootFolder = __dirname + "/files";
+    const rootFolder = __dirname + "/../files";
 
     const serviceDefDir = "service_definitions";
     const serviceDefPath = rootFolder + '/' + serviceDefDir;

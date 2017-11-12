@@ -48,9 +48,26 @@ $(document).ready(function () {
         _name = $(this).find(":selected").text();
         _id = $(this).find(':selected').data('id');
 
-        type = _type;
+        var type = _type;
 
         clearSelectionBar();
+
+
+        /* SHOW UNIT if applicable */
+        $(".unit").html('');
+        //console.log("Checking for units...");
+        serviceDefinitions.forEach(function (serviceDef) {
+            //console.log(serviceDef);
+            if (serviceDef.name === _name) {
+                var unit = serviceDef.unit;
+                //console.log("Found serviceDef: "+serviceDef+" with unit: "+serviceDef.unit);
+                if(unit){
+                    $(".unit").html('<span class="badge badge-info">'+unit+'</span>');
+                }
+            }
+        });
+        /* END show UNIT */
+
         //console.log(type);
         if (type === "BOOLEAN") {
             $(".type-boolean-input").html('<div class="checkbox">\n' +
