@@ -2,5 +2,6 @@
 	"id" : 					0,
 	"name" : 				"Range",
 	"type" :  				"RANGE",
-	"info" : 				"Maximum range between sender and receiver in m."
+	"info" : 				"Maximum range between sender and receiver in m.",
+	"unit" :				"m"
 }

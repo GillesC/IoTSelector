@@ -1,9 +1,9 @@
 {
-	"id" : 2,
+	"id" : 14,
 	"name" : "LoRa",
 	"services" :  "array of services (auto filled)",
 	"icon" : "https://www.i-real.nl/wp-content/uploads/2014/12/LoRa.png",
 	"dependencies" : [],
 	"info" : "informatie over de service",
-	"version" : "1.0"
+	"version" : "1.1"
 }

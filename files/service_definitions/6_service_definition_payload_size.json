@@ -2,5 +2,6 @@
 	"id" : 					6,
 	"name" : 				"Payload size",
 	"type" :  				"RANGE",
-	"info" : 				"payload size in bytes"
+	"info" : 				"payload size in bytes",
+	"unit" :				"byte"
 }

@@ -3,5 +3,6 @@
 	"name" : "NULL",
 	"type" :  ["CLASS","VALUE","RANGE","BOOLEAN"],
 	"classDefinitions" : "uit welke klasses je kan kiezen met hun nummer (= hun weight)",
-	"info" : "informatie over de service"
+	"info" : "informatie over de service",
+	"unit" : "unit if applicable (e.g., m, m/s, ..."
 }
