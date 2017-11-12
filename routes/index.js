@@ -99,19 +99,19 @@ function readContents() {
     const jsonfile = require('jsonfile');
     const fs = require('fs');
 
-    const rootFolder = __dirname + "/../files";
+    const rootFolder = path.join(__dirname, '/../files');
 
     const serviceDefDir = "service_definitions";
-    const serviceDefPath = rootFolder + '/' + serviceDefDir;
+    const serviceDefPath = path.join(rootFolder, '/', serviceDefDir);
 
     const servicesDir = "services";
-    const servicesPath = rootFolder + '/' + servicesDir;
+    const servicesPath = path.join(rootFolder , '/' , servicesDir);
 
     const technologiesDir = "technologies";
-    const technologiesPath = rootFolder + '/' + technologiesDir;
+    const technologiesPath = path.join(rootFolder , '/' , technologiesDir);
 
     const requiredServicesDir = "required_services";
-    const requiredServicesPath = rootFolder + '/' + requiredServicesDir;
+    const requiredServicesPath = path.join(rootFolder , '/' , requiredServicesDir);
 
 
     /**
