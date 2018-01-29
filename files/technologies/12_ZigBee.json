@@ -3,5 +3,6 @@
 	"name" : "ZigBee",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : [],
-	"info" : "informatie over de service"
+	"icon" : "/img/zigbee.jpg",
+	"info" : "Zigbee is the wireless language that everyday devices use to connect to one another. In fact, Zigbee could be at work in your home right now."
 }

@@ -3,6 +3,6 @@
 	"name" : "SIGFOX",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : "array of DEPENDENCIES (IDs of the technologies which are required)",
-	"icon" : "https://www.the-iot-marketplace.com/media/wysiwyg/connectivity/Sigfox_Logo_RGB_1.1489668896.png",
-	"info" : "informatie over de service"
+	"icon" : "/img/sigfox.jpg",
+	"info" : "It utilizes a wide-reaching signal that passes freely through solid objects, called \"ultra narrowband\" and requires little energy, being termed \"Low-power Wide-area network (LPWAN)\"."
 }

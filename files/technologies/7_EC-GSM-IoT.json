@@ -3,5 +3,6 @@
 	"name" : "EC-GSM-IoT",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : [],
-	"info" : "informatie over de service"
+	"icon" : "https://halberdbastion.com/sites/default/files/styles/medium/public/2017-06/EC-GSM-IoT-GSMA-Logo.png?itok=jXN8_IZM",
+	"info" : "Extended coverage GSM IoT (EC-GSM-IoT) is a standard-based Low Power Wide Area technology. It is based on eGPRS and designed as a high capacity, long range, low energy and low complexity cellular system for IoT communications. "
 }

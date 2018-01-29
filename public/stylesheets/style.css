@@ -7,6 +7,16 @@ a {
   color: #00B7FF;
 }
 
+#header img {
+    padding-top: 50px;
+    max-width: 1024px;
+    max-height: 100%;
+    height: inherit !important;
+    display:block;
+    margin:auto;
+}
+
+
 
 select{
   margin-top : 20px !important;

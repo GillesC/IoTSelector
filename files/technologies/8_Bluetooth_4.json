@@ -5,5 +5,6 @@
 	"services" :  "array of services (auto filled)",
 	"dependencies" : [],
 	"info" : "Bluetooth 4.2 is developped for the Internet Of Things to support with its low power protocol also it's an upgrade to be faster and to protect the privacy of the device.",
+	"icon" : "https://evothings.com/doc/starter-guides/images/bluetooth-smart-logo.png",
 	"version" : "4"
 }

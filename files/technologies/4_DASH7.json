@@ -3,5 +3,6 @@
 	"name" : "DASH7",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : [],
-	"info" : "informatie over de service"
+	"icon" : "/img/dash7.jpg",
+	"info" : "DASH7 Alliance Protocol (D7A) is an open source Wireless Sensor and Actuator Network protocol, which operates in the 433 MHz, 868 MHz and 915 MHz unlicensed ISM band/SRD band."
 }

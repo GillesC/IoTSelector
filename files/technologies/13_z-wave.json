@@ -3,5 +3,6 @@
 	"name" : "z-wave",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : [],
-	"info" : "informatie over de service"
+	"icon": "/img/z-wave.png",
+	"info" : "Z-Wave is the smarter choice for smart homes. With the largest choice of smart home products, Z-Wave provides more choice for homeowners and renters. So what does that mean for you? It means that you can customize your smart home to meet your needs."
 }

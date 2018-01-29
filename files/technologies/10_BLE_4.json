@@ -3,6 +3,7 @@
 	"name" : "Bluetooth Low Energy (Bluetooth Smart)",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : [],
-	"info" : "informatie over de service",
+	"info" : "...",
+	"icon" : "https://evothings.com/doc/starter-guides/images/bluetooth-smart-logo.png",
 	"version" : "4"
 }

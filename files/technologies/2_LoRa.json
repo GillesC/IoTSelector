@@ -2,8 +2,8 @@
 	"id" : 2,
 	"name" : "LoRa",
 	"services" :  "array of services (auto filled)",
-	"icon" : "https://www.i-real.nl/wp-content/uploads/2014/12/LoRa.png",
+	"icon" : "https://mydevices.com/wp-content/uploads/2016/12/features_lora_02.png",
 	"dependencies" : [],
-	"info" : "informatie over de service",
+	"info" : "A Semtech innovation, LoRa Technology offers a very compelling mix of long range, low power consumption and secure data transmission.",
 	"version" : "1.0"
 }
