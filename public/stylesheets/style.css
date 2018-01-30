@@ -16,6 +16,21 @@ a {
     margin:auto;
 }
 
+#technologies{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer img {
+    margin: 50px auto auto;
+    max-width: 1024px;
+    max-height: 100%;
+    height: inherit !important;
+    display:block;
+    border-top: 2px solid darkgray;
+}
+
+
 
 
 select{

@@ -1,51 +1,51 @@
-.row#technologies
-    for technology in technologies
-        .card(style='width: 20rem; margin:1rem; padding:0.5rem;')
-            if(typeof (technology.icon) !== 'undefined')
-                img.card-img-top.img-fluid(src=technology.icon)
-            else
-                img.card-img-top.img-fluid
-            .card-block
-                h4.card-title #{technology.name} &nbsp;
-                    if(typeof (technology.version) !== 'undefined')
-                       span.badge.badge-primary #{technology.version}
-                p.card-text
-                    | #{technology.info}
-            ul.list-group.list-group-flush
-            if(typeof (technology.dependencies) !== 'undefined')
-                if(technology.dependencies.length)
-                    .card-block
-                    for dependency in technology.dependencies
-                        a.card-link(href='#') #{dependency.name}
-            for service in technology.services
-                - var _serviceDef
-                - for serviceDef in serviceDefinitions
-                    - if(serviceDef.id === service.serviceDefId)
-                        - _serviceDef = serviceDef
-                ul.list-group.list-group-flush
-                    - var badge
-                    case service.type
-                        when "BOOLEAN"
-                            - badge = '<span class="badge badge-default">B</span>'
-                        when "CLASS"
-                            - badge = '<span class="badge badge-primary">C</span>'
-                        when "RANGE"
-                            - badge = '<span class="badge badge-success">R</span>'
-                        when "VALUE"
-                            - badge = '<span class="badge badge-info">V</span>'
 
-                    - var unit = ''
-                    - if(_serviceDef.unit)
-                        - unit = '<span class="badge badge-default">'+_serviceDef.unit+'</span>'
-                    if(service.checked)
-                        li.list-group-item.light-green-background
-                            if(service.checked)
-                                i.fa.fa-check.pull-right.green(aria-hidden="true")
-                                |  &nbsp; &nbsp; &nbsp;
-                             !{badge} &nbsp; #{service.name} #{service.values}  &nbsp;  !{unit}
-                    else
-                        li.list-group-item
-                            if(service.checked)
-                                i.fa.fa-check.pull-right.green(aria-hidden="true")
-                                |  &nbsp; &nbsp; &nbsp;
-                             !{badge} &nbsp; #{service.name} #{service.values} &nbsp;  !{unit}
+for technology in technologies
+    .card(style='width: 20rem; margin:1rem; padding:0.5rem;')
+        if(typeof (technology.icon) !== 'undefined')
+            img.card-img-top.img-fluid(src=technology.icon)
+        else
+            img.card-img-top.img-fluid
+        .card-block
+            h4.card-title #{technology.name} &nbsp;
+                if(typeof (technology.version) !== 'undefined')
+                   span.badge.badge-primary #{technology.version}
+            p.card-text
+                | #{technology.info}
+        ul.list-group.list-group-flush
+        if(typeof (technology.dependencies) !== 'undefined')
+            if(technology.dependencies.length)
+                .card-block
+                for dependency in technology.dependencies
+                    a.card-link(href='#') #{dependency.name}
+        for service in technology.services
+            - var _serviceDef
+            - for serviceDef in serviceDefinitions
+                - if(serviceDef.id === service.serviceDefId)
+                    - _serviceDef = serviceDef
+            ul.list-group.list-group-flush
+                - var badge
+                case service.type
+                    when "BOOLEAN"
+                        - badge = '<span class="badge badge-default">B</span>'
+                    when "CLASS"
+                        - badge = '<span class="badge badge-primary">C</span>'
+                    when "RANGE"
+                        - badge = '<span class="badge badge-success">R</span>'
+                    when "VALUE"
+                        - badge = '<span class="badge badge-info">V</span>'
+
+                - var unit = ''
+                - if(_serviceDef.unit)
+                    - unit = '<span class="badge badge-default">'+_serviceDef.unit+'</span>'
+                if(service.checked)
+                    li.list-group-item.light-green-background
+                        if(service.checked)
+                            i.fa.fa-check.pull-right.green(aria-hidden="true")
+                            |  &nbsp; &nbsp; &nbsp;
+                         !{badge} &nbsp; #{service.name} #{service.values}  &nbsp;  !{unit}
+                else
+                    li.list-group-item
+                        if(service.checked)
+                            i.fa.fa-check.pull-right.green(aria-hidden="true")
+                            |  &nbsp; &nbsp; &nbsp;
+                         !{badge} &nbsp; #{service.name} #{service.values} &nbsp;  !{unit}
