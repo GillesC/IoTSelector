@@ -9,7 +9,7 @@ a {
 
 #header img {
     padding-top: 50px;
-    max-width: 1024px;
+    max-width: 800px;
     max-height: 100%;
     height: inherit !important;
     display:block;
@@ -28,6 +28,10 @@ footer img {
     height: inherit !important;
     display:block;
     border-top: 2px solid darkgray;
+}
+
+hr.white{
+    color:white;
 }
 
 

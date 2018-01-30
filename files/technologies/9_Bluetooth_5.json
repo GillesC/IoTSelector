@@ -4,6 +4,6 @@
 	"services" :  "array of services (auto filled)",
 	"dependencies" : [],
 	"info" : "With the launch of Bluetooth 5, Bluetooth technology continues to evolve to meet the needs of the industry as the global wireless standard for simple, secure connectivity. With 4x range, 2x speed and 8x broadcasting message capacity, the enhancements of Bluetooth 5 focus on increasing the functionality of Bluetooth for the IoT. These features, along with improved interoperability and coexistence with other wireless technologies, continue to advance the IoT experience by enabling simple and effortless interactions across the vast range of connected devices.",
-	"icon" : "https://evothings.com/doc/starter-guides/images/bluetooth-smart-logo.png",
+	"icon" : "/img/blt.png",
 	"version" : "5"
 }

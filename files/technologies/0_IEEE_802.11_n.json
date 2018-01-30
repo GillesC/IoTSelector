@@ -3,5 +3,6 @@
 	"name" : "IEEE 802.11n",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : [],
-	"info" : "informatie over de service"
+	"icon" : "/img/802-11-n.jpg",
+	"info" : "IEEE 802.11 is a set of media access control (MAC) and physical layer (PHY) specifications for implementing wireless local area network (WLAN) computer communication in the 900 MHz and 2.4, 3.6, 5, and 60 GHz frequency bands."
 }

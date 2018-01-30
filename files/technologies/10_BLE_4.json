@@ -4,6 +4,6 @@
 	"services" :  "array of services (auto filled)",
 	"dependencies" : [],
 	"info" : "...",
-	"icon" : "https://evothings.com/doc/starter-guides/images/bluetooth-smart-logo.png",
+	"icon" : "/img/ble.png",
 	"version" : "4"
 }

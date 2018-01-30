@@ -3,5 +3,6 @@
 	"name" : "NB-IoT",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : [],
+	"icon" : "/img/nb-iot.png",
 	"info" : "NB-IoT is a narrowband radio technology designed for the Internet of Things (IoT) and is one of a range of Mobile IoT (MIoT) technologies standardized by the 3rd Generation Partnership Project (3GPP)."
 }

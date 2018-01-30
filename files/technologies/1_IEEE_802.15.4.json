@@ -1,8 +1,8 @@
 {
 	"id" : 1,
-	"icon" : "http://www.ieee802.org/15/pub/ieee802-15%20logo.jpg",
 	"name" : "IEEE 802.15.4",
 	"services" :  "array of services (auto filled)",
 	"dependencies" : "array of DEPENDENCIES (IDs of the technologies which are required)",
-	"info" : "informatie over de service"
+	"info" : "EEE 802.15.4 is a technical standard which defines the operation of low-rate wireless personal area networks (LR-WPANs). It specifies the physical layer and media access control for LR-WPANs, and is maintained by the IEEE 802.15 working group.",
+	"icon" : "/img/802-15-4.jpg"
 }
